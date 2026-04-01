@@ -22,14 +22,17 @@ for(let i=1;i<=6;i++){
                 <option>Mental Math</option>
                 <option>English</option>
                 <option>English Grammar</option>
-                <option>Computer</option>
                 <option>Hindi</option>
                 <option>Hindi Grammar</option>
+                <option>Computer</option>
                 <option>Science</option>
+                <option>E.V.S</option>
                 <option>S.S.T</option>
+                <option>G.K.</option>
                 <option>Oral</option>
                 <option>Rhymes</option>
-                
+                <option>Activity</option>
+                <option>Drawing</option>
             </select>
 
             <input id="cw${i}" placeholder="Class Work">
