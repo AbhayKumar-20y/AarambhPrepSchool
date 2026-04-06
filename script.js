@@ -35,6 +35,7 @@ for(let i=1;i<=6;i++){
                 <option>Drawing</option>
                 <option>Hindi Writing Book</option>
                 <option>English Writing Book</option>
+                <option>Hindi Rhymes</option>
                 <option>English Rhymes</option>
                 <option>English Alphabet Book</option>
                 <option>Hindi Book(अक्षर ज्ञान)</option>
