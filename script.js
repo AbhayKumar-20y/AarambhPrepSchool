@@ -33,6 +33,13 @@ for(let i=1;i<=6;i++){
                 <option>Rhymes</option>
                 <option>Activity</option>
                 <option>Drawing</option>
+                <option>Hindi Writing Book</option>
+                <option>English Writing Book</option>
+                <option>English Rhymes</option>
+                <option>English Alphabet Book</option>
+                <option>Hindi Book(अक्षर ज्ञान)</option>
+                <option>Math Book(Numbers 1-100)</option>
+                <option>Hindi Writing Book(अक्षर लेखन)</option>
             </select>
 
             <input id="cw${i}" placeholder="Class Work">
