@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Aarambh Prep School Daily Class Report</title>
+<title>Class Report System</title>
 
 <link rel="stylesheet" href="style.css">
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 
 </head>
-
 <body>
 
 <div class="container">
 
 <h2>Aarambh Prep School Daily Class Report</h2>
-<!-- <p>Developed by A6h & Chatgpt</p> -->
 
 <div class="card">
+
 <select id="class">
-    <option>Select Class</option>
+ <option>Select Class</option>
     <option>Play(A)</option>
     <option>L.K.G(A)</option>
     <option>U.K.G(A)</option>
@@ -33,9 +32,8 @@
     <option>Target Batch</option>
 </select>
 
-<!-- <input id="facilitator" placeholder="Facilitator Name"> -->
 <select id="facilitator">
-    <option>Select Teacher</option>
+  <option>Select Teacher</option>
     <option>Abhay Sir</option>
     <option>Sundram Sir</option>
     <option>Himanshu Sir</option>
@@ -49,31 +47,17 @@
 </select>
 
 <br>
-<span id="daydate" style="font-weight:bold;"></span>
+
+<span id="daydate" style="color: #333333; font-weight: 500;"></span>
 
 <input id="totalStudents" type="number" placeholder="Total Students">
 <input id="presentStudents" type="number" placeholder="Present Students">
 
-<input id="remarksInput" placeholder="Enter Remarks">
+<!-- NEW INPUTS -->
+<input id="absentInput" placeholder="Absent Students (comma separated)">
+<input id="hwNotDoneInput" placeholder="HW Not Done (comma separated)">
+<input id="extraInput" placeholder="Extra Notes">
 
-<h3>Select Table Style</h3>
-<select id="styleSelect">
-    <option value="style1">Purple</option>
-    <option value="style2">Blue</option>
-    <option value="style3">Green</option>
-    <option value="style4">Black & White</option>
-<option value="style5">Orange</option>
-<option value="style6">Red</option>
-<option value="style7">Pink</option>
-<option value="style8">Teal</option>
-<option value="style9">Dark Blue</option>
-<option value="style10">Gray</option>
-<option value="style11">Indigo</option>
-<option value="style12">Lime</option>
-<option value="style13">Brown</option>
-<option value="style14">Cyan</option>
-
-</select>
 </div>
 
 <div class="card">
@@ -84,43 +68,46 @@
 <button onclick="generate()">Generate</button>
 <button onclick="downloadImage()">Download Image</button>
 
-
 <!-- OUTPUT -->
-<div id="worksheet" class="style1">
-    <div class="header">
-        <!--<h1 style="font-size: 30px;">Aarambh Prep. School</h1>-->
-        <h1 style="font-size: 25px;">Aarambh Prep. School</h1>
-        <h3>Class - <span id="outClass"></span> (Daily Class Work Report)</h3>
-    </div>
+<div id="worksheet">
 
-    <div class="top-bar">
-        <div>Class - <span id="outClass2"></span></div>
-        <div>Facilitator - <span id="outFac"></span></div>
-        <div>Date : <span id="outDate"></span></div>
-        <div>Total: <span id="outTotal"></span></div>
-        <div>Present: <span id="outPresent"></span></div>
-        <div>Absent: <span id="outAbsent"></span></div>
-    </div>
+<div class="header">
+<h1 style="font-size: 24px;">AARAMBH PREP. SCHOOL</h1>
+<div class="sub-title" style="font-size: 20px; color: #333333;font-weight: bold;">
+Class <span id="outClass"></span> — Daily Class Work Report
+</div>
+</div>
 
-    <table>
-        <thead>
-            <tr>
-                <th rowspan="2">Period</th>
-                <th rowspan="2">Subject</th>
-                <th colspan="2" rowspan="2">Task Alloted</th>
-                <th rowspan="2" class="remarks1">Remarks</th>
-            </tr>
-            <!-- <tr>
-                <th>Type</th>
-                <th>Work</th>
-            </tr> -->
-        </thead>
-        <tbody id="tableData"></tbody>
-    </table>
-    
+<div class="top-bar">
+<div>Date: <span id="outDate"></span></div>
+<div>Facilitator: <span id="outFac"></span></div>
+<div>Total Student: <span id="outTotal"></span></div>
+<div>Present: <span id="outPresent"></span> | Absent: <span id="outAbsent"></span></div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Subject</th>
+<th>Class Work</th>
+<th>Home Work</th>
+</tr>
+</thead>
+
+<tbody id="tableData"></tbody>
+</table>
+
+<div class="bottom-box">
+<p><b>Absent:</b> <span id="outAbsentText"></span></p>
+<p><b>HW Not Done:</b> <span id="outHW"></span></p>
+<p><b>Extra:</b> <span id="outExtra"></span></p>
 </div>
 
 </div>
+
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
