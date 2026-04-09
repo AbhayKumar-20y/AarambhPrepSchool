@@ -5,19 +5,26 @@ function getTodayDate(){
     return today.toLocaleDateString() + " (" + days[today.getDay()] + ")";
 }
 
+// ORDINAL FUNCTION (1st, 2nd, 3rd...)
+function getOrdinal(n){
+    let s = ["th","st","nd","rd"];
+    let v = n % 100;
+    return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
 window.onload = function(){
+
+    // DATE SHOW
     document.getElementById("daydate").innerText = getTodayDate();
-};
 
-// INPUTS
-for(let i=1;i<=6;i++){
-    document.getElementById("inputs").innerHTML += `
+    // CREATE PERIOD INPUTS
+    for(let i=1;i<=6;i++){
+        document.getElementById("inputs").innerHTML += `
         <div>
-            <b>Period ${i}</b><br>
+            <b>${getOrdinal(i)} Period</b><br>
 
-            <select id="sub${i}">
-                
-                <option>Select Subject</option>
+            <select id="sub${i}" >
+               <option>Select Subject</option>
                 <option>Math</option>
                 <option>Mental Math</option>
                 <option>English</option>
@@ -46,16 +53,9 @@ for(let i=1;i<=6;i++){
             <input id="cw${i}" placeholder="Class Work">
             <input id="hw${i}" placeholder="Home Work">
         </div>
-    `;
-}
-
-// SUFFIX
-function getSuffix(i){
-    if(i==1) return "st";
-    if(i==2) return "nd";
-    if(i==3) return "rd";
-    return "th";
-}
+        `;
+    }
+};
 
 // GENERATE
 function generate(){
@@ -63,18 +63,16 @@ function generate(){
     let worksheet = document.getElementById("worksheet");
     worksheet.style.display = "block";
 
-    let selectedStyle = document.getElementById("styleSelect").value;
-    worksheet.className = selectedStyle;
-
-    let cls = document.getElementById("class").value;
-    document.getElementById("outClass").innerText = cls;
-    document.getElementById("outClass2").innerText = cls;
+    // CLASS + FACILITATOR
+    document.getElementById("outClass").innerText =
+        document.getElementById("class").value;
 
     document.getElementById("outFac").innerText =
         document.getElementById("facilitator").value;
 
     document.getElementById("outDate").innerText = getTodayDate();
 
+    // STUDENT COUNT
     let total = +document.getElementById("totalStudents").value || 0;
     let present = +document.getElementById("presentStudents").value || 0;
     let absent = total - present;
@@ -83,8 +81,31 @@ function generate(){
     document.getElementById("outPresent").innerText = present;
     document.getElementById("outAbsent").innerText = absent;
 
-    let remarks = document.getElementById("remarksInput").value || "All Students Were Present";
+    // INPUT VALUES
+    let absentText = document.getElementById("absentInput").value;
+    let hwText = document.getElementById("hwNotDoneInput").value;
+    let extraText = document.getElementById("extraInput").value;
 
+    // FORMAT LIST
+    function formatList(text){
+        if(!text) return "-";
+        return text.split(",").map(x => x.trim()).filter(x => x).join(", ");
+    }
+
+    document.getElementById("outAbsentText").innerText = formatList(absentText);
+    document.getElementById("outHW").innerText = formatList(hwText);
+    document.getElementById("outExtra").innerText = extraText || "-";
+
+    // ABSENT COUNT CHECK (FIXED)
+    let absentCount = absentText
+        ? absentText.split(",").map(x => x.trim()).filter(x => x).length
+        : 0;
+
+    if(absentCount !== absent && absent !== 0){
+        alert("⚠️ Absent count mismatch! Check names.");
+    }
+
+    // TABLE DATA
     let data = "";
 
     for(let i=1;i<=6;i++){
@@ -95,18 +116,10 @@ function generate(){
 
         data += `
         <tr>
-            <td rowspan="2">${i}<sup>${getSuffix(i)}</sup></td>
-            <td rowspan="2">${subject}</td>
-
-            <td>Class Work</td>
-            <td>${cw}</td>
-
-            ${i === 1 ? `<td rowspan="12" class="remarks1">${remarks}</td>` : ""}
-        </tr>
-
-        <tr>
-            <td>Home Work</td>
-            <td>${hw}</td>
+            <td class="period-text">${getOrdinal(i)}</td>
+            <td class="outputSub">${subject}</td>
+            <td>${cw || "-"}</td>
+            <td>${hw || "-"}</td>
         </tr>
         `;
     }
@@ -114,11 +127,11 @@ function generate(){
     document.getElementById("tableData").innerHTML = data;
 }
 
-// DOWNLOAD
+// DOWNLOAD IMAGE
 function downloadImage(){
     html2canvas(document.getElementById("worksheet")).then(canvas=>{
         let link = document.createElement("a");
-        link.download = "worksheet.png";
+        link.download = "Class_Report.png";
         link.href = canvas.toDataURL();
         link.click();
     });
