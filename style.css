@@ -1,184 +1,122 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg,#dfe9f3,#ffffff);
+    font-family: 'Segoe UI';
+    background: #f0f2f5;
     text-align: center;
 }
 
-/* CONTAINER */
 .container {
     width: 95%;
-    max-width: 1100px;
+    max-width: 900px;
     margin: auto;
 }
 
-
-/* CARD UI */
 .card {
     background: white;
     padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
     margin: 10px 0;
-
+    box-shadow: 0 5px 10px #8E67B4;
 }
 
-/* INPUTS */
 input, select {
     width: 90%;
     padding: 10px;
-    margin: 6px;
-    border-radius: 8px;
+    margin: 5px;
+    border-radius: 6px;
     border: 1px solid #ccc;
-    outline: none;
 }
 
-input:focus, select:focus {
-    border-color: purple;
-}
-
-/* BUTTON */
 button {
-    padding: 10px 15px;
+    padding: 10px 20px;
     margin: 10px;
-    background: linear-gradient(45deg,purple,#6a1b9a);
+    background: #6a5acd;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 50px 20px 50px 20px;
 }
 
 button:hover {
-    transform: scale(1.05);
+    background: #483d8b;
 }
 
 /* WORKSHEET */
 #worksheet {
     display: none;
     margin-top: 20px;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 /* HEADER */
 .header {
-    background: linear-gradient(45deg,#8e44ad,#6a1b9a);
-    color: white;
-    /*padding: 5px;*/
-    height: 90px;
-    border-radius: 5px;
-    align-content: center;
-    text-align: center;
+    background: #e8e3f5;
+    padding: 15px;
 }
+
+.header h1 {
+    /* color: #6a1b9a; */
+    color: #613D91;
+    margin: 0;
+}
+
+.sub-title {
+    background: #d6cdea;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
 /* TOP BAR */
 .top-bar {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px;
-    background: #f8f8f8;
+    flex-wrap: wrap;
     font-weight: bold;
-    border: 1px double rgb(0, 0, 0);
+  color: #333333;
 }
-
 
 /* TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
-    border: 1px solid rgb(0, 0, 0);
+     border-radius: 10px;
+     color: #333333;
 }
 
 th {
-    background: #6a1b9a;
+    background: #8E67B4;
     color: white;
 }
 
 td {
-    background: #f4ecf7;
-    font-weight: bold;
+    /* background: #f2f2f2; */
+    background: #FFFFFF;
 }
 
 th, td {
     border: 1px solid #ccc;
-    padding: 8px;
-    text-align: center;
-    word-wrap: break-word;
-    border: 1px solid rgb(0, 0, 0);
-
+    padding: 10px;
+    
+}
+.period-text{
+    font-weight: 500;
 }
 
-/* REMARKS BIG WIDTH */
-th.remarks1, td.remarks1 {
-    width: 35%;
-    font-weight: bold;
-    border: 1px solid rgb(0, 0, 0);
-
+.outputSub{
+    font-weight: 500;
+}
+/* BOTTOM */
+.bottom-box {
+    background: #eee;
+    padding: 15px;
+    margin-top: 10px;
+    text-align: left;
 }
 
-/* STYLE SWITCH */
-#worksheet.style2 th { background:#1f618d; }
-#worksheet.style2 td { background:#d6eaf8; }
-
-#worksheet.style3 th { background:#1e8449; }
-#worksheet.style3 td { background:#d5f5e3; }
-
-#worksheet.style4 th { background:black; }
-#worksheet.style4 td { background:#f2f2f2; }
-
-/* STYLE 5 - Orange */
-#worksheet.style5 th { background:#d35400; }
-#worksheet.style5 td { background:#fdebd0; }
-
-/* STYLE 6 - Red */
-#worksheet.style6 th { background:#c0392b; }
-#worksheet.style6 td { background:#f5b7b1; }
-
-/* STYLE 7 - Pink */
-#worksheet.style7 th { background:#ad1457; }
-#worksheet.style7 td { background:#f8bbd0; }
-
-/* STYLE 8 - Teal */
-#worksheet.style8 th { background:#0e6251; }
-#worksheet.style8 td { background:#a3e4d7; }
-
-/* STYLE 9 - Dark Blue */
-#worksheet.style9 th { background:#154360; }
-#worksheet.style9 td { background:#aed6f1; }
-
-/* STYLE 10 - Gray */
-#worksheet.style10 th { background:#424949; }
-#worksheet.style10 td { background:#d5d8dc; }
-
-/* STYLE 11 - Indigo */
-#worksheet.style11 th { background:#283593; }
-#worksheet.style11 td { background:#c5cae9; }
-
-/* STYLE 12 - Lime */
-#worksheet.style12 th { background:#7d6608; }
-#worksheet.style12 td { background:#f9e79f; }
-
-/* STYLE 13 - Brown */
-#worksheet.style13 th { background:#6e2c00; }
-#worksheet.style13 td { background:#edbb99; }
-
-/* STYLE 14 - Cyan */
-#worksheet.style14 th { background:#117a65; }
-#worksheet.style14 td { background:#a2d9ce; }
-
-
-
-th {
-    color: white;
-    letter-spacing: 0.5px;
-}
-
-td {
-    transition: 0.2s;
-}
-
-td:hover {
-    background: rgba(0,0,0,0.05);
+.bottom-box p {
+    margin: 8px 0;
+    padding: 5px;
+    border-bottom: 1px dashed #ccc;
 }
