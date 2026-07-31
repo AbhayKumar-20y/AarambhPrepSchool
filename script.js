@@ -25,6 +25,7 @@ window.onload = function(){
 
             <select id="sub${i}" >
                <option>Select Subject</option>
+               <option>Navodaya Class</option>
                 <option>Math</option>
                 <option>Mental Math</option>
                 <option>English</option>
